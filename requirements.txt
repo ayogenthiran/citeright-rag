@@ -1,3 +1,9 @@
 streamlit
-
-
+openai
+arxiv
+python-dotenv
+requests
+tqdm
+sentence-transformers
+chromadb
+watchdog
