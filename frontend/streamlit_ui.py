@@ -17,31 +17,65 @@ class CiteRightUI:
     def render(self):
         """Render the UI components"""
         
-        st.markdown("<h1 style='text-align: center;'>📚 CiteRight – Literature Review Assistant</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Generate comprehensive literature reviews with minimal input</p>", unsafe_allow_html=True)
+        # Custom CSS for a more modern look
+        st.markdown("""
+        <style>
+        .main-header {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+        .sub-header {
+            font-size: 1.2rem;
+            color: #4B5563;
+            margin-bottom: 2rem;
+        }
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E5E7EB;
+        }
+        .result-container {
+            padding: 1.5rem;
+            background-color: #F9FAFB;
+            border-radius: 0.5rem;
+            border: 1px solid #E5E7EB;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        # Main header with logo and title
+        st.markdown("<div class='main-header' style='text-align: center;'>📚 CiteRight</div>", unsafe_allow_html=True)
+        st.markdown("<div class='sub-header' style='text-align: center;'>AI-Powered Literature Review Assistant</div>", unsafe_allow_html=True)
         
         # Split screen into two columns for input and output
         col1, col2 = st.columns([1, 2])
         
         # Input column
         with col1:
-            st.subheader("Research Details")
+            st.markdown("<div class='section-header'>Research Details</div>", unsafe_allow_html=True)
             
             title = st.text_input("Title of your paper", 
-                                 help="Enter the title of your research paper")
+                                 placeholder="Enter the title of your research paper")
             
             problem = st.text_area("Problem Statement / Research Notes", 
                                   height=150,
-                                  help="Describe your research problem or provide notes")
+                                  placeholder="Describe your research problem or provide notes")
             
             seeds = st.text_area("Seed Papers (optional)", 
-                                help="Enter arXiv IDs or URLs, one per line")
+                                placeholder="Enter arXiv IDs or URLs, one per line")
             
             seed_papers = [s.strip() for s in seeds.split("\n") if s.strip()]
             
-            # Generate button
+            # Generate button with improved styling
             generate_btn = st.button("Generate Literature Review", 
-                                    type="primary")
+                                    type="primary", 
+                                    use_container_width=True)
             
             # Process when button is clicked
             if generate_btn:
@@ -79,8 +113,8 @@ class CiteRightUI:
                 
                 if isinstance(results, str):
                     # Handle simple string result (for compatibility with old run_pipeline)
-                    st.subheader("Literature Review")
-                    st.write(results)
+                    st.markdown("<div class='section-header'>Literature Review</div>", unsafe_allow_html=True)
+                    st.markdown(f"<div class='result-container'>{results}</div>", unsafe_allow_html=True)
                     
                 else:
                     # Handle structured result object
@@ -93,12 +127,12 @@ class CiteRightUI:
                         
                     else:
                         # Display results
-                        st.subheader("Literature Review")
-                        st.write(results.get("review", ""))
+                        st.markdown("<div class='section-header'>Literature Review</div>", unsafe_allow_html=True)
+                        st.markdown(f"<div class='result-container'>{results.get('review', '')}</div>", unsafe_allow_html=True)
                         
                         # Display keywords if available
                         if "keywords" in results and results["keywords"]:
-                            st.subheader("Keywords Used")
+                            st.markdown("<div class='section-header'>Keywords Used</div>", unsafe_allow_html=True)
                             kw_cols = st.columns(min(len(results["keywords"]), 5))
                             for i, kw in enumerate(results["keywords"]):
                                 col_idx = i % 5
@@ -107,7 +141,7 @@ class CiteRightUI:
                         
                         # Display papers if available
                         if "papers" in results and results["papers"]:
-                            st.subheader("Referenced Papers")
+                            st.markdown("<div class='section-header'>Referenced Papers</div>", unsafe_allow_html=True)
                             for i, paper in enumerate(results["papers"]):
                                 with st.expander(f"{i+1}. {paper.get('title', 'Unknown title')}"):
                                     if "authors" in paper:
@@ -122,20 +156,16 @@ class CiteRightUI:
                                     if paper.get('pdf_url'):
                                         st.markdown(f"[View Paper]({paper['pdf_url']})")
             else:
-                st.info("Enter your research details and click 'Generate Literature Review' to start")
-                
-                # Show example
-                with st.expander("See an example"):
-                    st.markdown("""
-                    **Example input:**
-                    
-                    **Title:** Benefits of Regular Exercise on Mental Health
-                    
-                    **Problem Statement:** What are the psychological benefits of regular physical exercise on mental health, particularly for reducing symptoms of depression and anxiety? Looking for studies that examine the frequency, intensity, and types of exercise that show the most significant effects.
-                    
-                    **Seed Papers:**
-                    (Leave empty for a simple test)
-                    """)
+                # Clean placeholder when no results
+                st.markdown("""
+                <div style="display: flex; justify-content: center; align-items: center; height: 70vh; text-align: center;">
+                    <div>
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
+                        <div style="font-size: 1.5rem; color: #6B7280; margin-bottom: 0.5rem;">Your literature review will appear here</div>
+                        <div style="color: #9CA3AF;">Fill out the form on the left and click "Generate Literature Review"</div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
 
 # Create and render the UI
 if __name__ == "__main__":
