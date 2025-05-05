@@ -157,16 +157,11 @@ class CiteRightUI:
                                     if paper.get('pdf_url'):
                                         st.markdown(f"[View Paper]({paper['pdf_url']})")
             else:
-                # Improved prompt text
+                # Minimal clean placeholder - no instructions text
                 st.markdown("""
                 <div style="display: flex; justify-content: center; align-items: center; height: 70vh; text-align: center;">
                     <div>
                         <div style="font-size: 5rem; margin-bottom: 1.5rem;">📝</div>
-                        <div style="font-size: 1.8rem; color: #1E3A8A; margin-bottom: 1rem; font-weight: 600;">Ready to create your literature review</div>
-                        <div style="font-size: 1.2rem; color: #4B5563; line-height: 1.6;">
-                            Fill out the form on the left and click<br/>
-                            <span style="background-color: #E0E7FF; padding: 0.2rem 0.5rem; border-radius: 0.25rem; color: #1E3A8A; font-weight: 500;">Generate Literature Review</span>
-                        </div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
