@@ -162,6 +162,9 @@ class CiteRightUI:
                 <div style="display: flex; justify-content: center; align-items: center; height: 70vh; text-align: center;">
                     <div>
                         <div style="font-size: 5rem; margin-bottom: 1.5rem;">📝</div>
+                        <div style="font-size: 1.4rem; color: #6B7280; font-weight: 300; letter-spacing: 0.05em; font-style: italic;">
+                            Your generated literature review will appear here
+                        </div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
