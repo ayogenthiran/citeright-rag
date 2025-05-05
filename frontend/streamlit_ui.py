@@ -21,7 +21,7 @@ class CiteRightUI:
         st.markdown("""
         <style>
         .main-header {
-            font-size: 3.5rem;
+            font-size: 4.2rem;
             font-weight: 800;
             color: #1E3A8A;
             margin-bottom: 0.5rem;
@@ -39,7 +39,7 @@ class CiteRightUI:
             margin-top: 1rem;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #E5E7EB;
+            border-bottom: none;
         }
         .result-container {
             padding: 1.5rem;
@@ -51,7 +51,7 @@ class CiteRightUI:
         """, unsafe_allow_html=True)
         
         # Main header with logo and title - BIGGER TITLE
-        st.markdown("<div class='main-header' style='text-align: center;'>📚 CITERIGHT</div>", unsafe_allow_html=True)
+        st.markdown("<div class='main-header' style='text-align: center;'>📚 CiteRight</div>", unsafe_allow_html=True)
         st.markdown("<div class='sub-header' style='text-align: center;'>AI-Powered Literature Review Assistant</div>", unsafe_allow_html=True)
         
         # Split screen into two columns for input and output
