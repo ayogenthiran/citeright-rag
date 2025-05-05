@@ -13,6 +13,16 @@ CiteRight is an LLM-powered tool designed to streamline literature reviews and a
 - **Academic Citations**: Proper citation formatting for referenced papers
 - **User-Friendly Interface**: Clean Streamlit UI for easy interaction
 
+## User Interface
+
+CiteRight features a clean, modern interface designed for ease of use:
+
+![CiteRight UI](assets/Streamlit_UI.jpg)
+
+The interface is divided into two main sections:
+- **Left panel**: Research input area where you enter your paper title, problem statement, and optional seed papers
+- **Right panel**: Results area where your generated literature review will appear
+
 ## Quick Start
 
 ### Prerequisites
