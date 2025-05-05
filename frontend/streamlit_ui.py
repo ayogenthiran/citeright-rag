@@ -21,13 +21,14 @@ class CiteRightUI:
         st.markdown("""
         <style>
         .main-header {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             color: #1E3A8A;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.05em;
         }
         .sub-header {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #4B5563;
             margin-bottom: 2rem;
         }
@@ -49,8 +50,8 @@ class CiteRightUI:
         </style>
         """, unsafe_allow_html=True)
         
-        # Main header with logo and title
-        st.markdown("<div class='main-header' style='text-align: center;'>📚 CiteRight</div>", unsafe_allow_html=True)
+        # Main header with logo and title - BIGGER TITLE
+        st.markdown("<div class='main-header' style='text-align: center;'>📚 CITERIGHT</div>", unsafe_allow_html=True)
         st.markdown("<div class='sub-header' style='text-align: center;'>AI-Powered Literature Review Assistant</div>", unsafe_allow_html=True)
         
         # Split screen into two columns for input and output
@@ -156,13 +157,16 @@ class CiteRightUI:
                                     if paper.get('pdf_url'):
                                         st.markdown(f"[View Paper]({paper['pdf_url']})")
             else:
-                # Clean placeholder when no results
+                # Improved prompt text
                 st.markdown("""
                 <div style="display: flex; justify-content: center; align-items: center; height: 70vh; text-align: center;">
                     <div>
-                        <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
-                        <div style="font-size: 1.5rem; color: #6B7280; margin-bottom: 0.5rem;">Your literature review will appear here</div>
-                        <div style="color: #9CA3AF;">Fill out the form on the left and click "Generate Literature Review"</div>
+                        <div style="font-size: 5rem; margin-bottom: 1.5rem;">📝</div>
+                        <div style="font-size: 1.8rem; color: #1E3A8A; margin-bottom: 1rem; font-weight: 600;">Ready to create your literature review</div>
+                        <div style="font-size: 1.2rem; color: #4B5563; line-height: 1.6;">
+                            Fill out the form on the left and click<br/>
+                            <span style="background-color: #E0E7FF; padding: 0.2rem 0.5rem; border-radius: 0.25rem; color: #1E3A8A; font-weight: 500;">Generate Literature Review</span>
+                        </div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
