@@ -14,16 +14,17 @@ def generate_keywords(title, problem):
         raise ValueError("Title and problem statement are required")
         
     # Construct a more specific prompt to get well-formatted response
-    prompt = f"""
-    Generate 5-7 specific search keywords for this research topic.
-    Return ONLY the keywords as a comma-separated list.
-    
-    Title: {title}
-    Problem: {problem}
-    """
+    prompt = f"""Generate 5-7 precise academic search keywords for this research topic.
+Return ONLY a comma-separated list of keywords without numbering, explanation, or additional text.
+
+TITLE: {title}
+PROBLEM: {problem}
+
+Example good response format: "keyword1, keyword2, keyword3, keyword4, keyword5"
+"""
     
     try:
-        response = call_llm(prompt)
+        response = call_llm(prompt, temperature=0.3)
         
         # First, try to parse as comma-separated list
         if "," in response:
@@ -35,7 +36,7 @@ def generate_keywords(title, problem):
         # Remove any numbering or bullet points from lines
         cleaned_lines = []
         for line in lines:
-            # Handle numbered lists (e.g., "1. Keyword")
+            # Handle numbered lists
             if ". " in line and line.split(". ")[0].isdigit():
                 cleaned_lines.append(line.split(". ", 1)[1])
             # Handle bullet points
