@@ -2,7 +2,7 @@
 
 CiteRight is an LLM-powered tool designed to streamline literature reviews and academic research by fetching, analyzing, and synthesizing relevant papers from arXiv. This system helps researchers create comprehensive literature reviews from minimal input, saving valuable time in the research process.
 
-![CiteRight Screenshot](assets/screenshot.png)
+![CiteRight Screenshot](assets/Streamlit_UI.jpg)
 
 ## Features
 
