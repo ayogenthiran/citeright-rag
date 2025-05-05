@@ -60,5 +60,4 @@ package-lock.json
 *.xlsx
 *.parquet
 
-# Test files
-tests/
+# Removed test files exclusion as requested
